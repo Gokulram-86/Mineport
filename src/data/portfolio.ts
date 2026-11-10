@@ -7,9 +7,11 @@ export const profile = {
   email: 'gokulramj20@gmail.com', // Replace with your public contact email.
   intro: 'I build useful things with code, learn by experimenting, and enjoy turning complex problems into simple experiences.',
   about: 'I am a software engineering graduate building a strong foundation in software development. I enjoy working with Python, exploring data tools, and understanding how reliable applications are designed and built. I am currently growing my skills through hands-on projects and continuous learning.',
+  whatsapp: '919489703603', // Your WhatsApp number with country code, digits only, e.g. '919876543210'.
   github: 'https://github.com/Gokulram-86/', // Replace with your GitHub profile URL.
   linkedin: 'https://www.linkedin.com/in/gokulram-jeyaraman-626840406/', // Replace with your LinkedIn profile URL.
-  resume: '', // Add a public resume URL or a file in /public and set it here.
+  resume: '/resume.pdf', // Put your resume at public/resume.pdf (or change this to a public URL).
+  resumeLogUrl: 'https://script.google.com/macros/s/AKfycbw4Y_hn_Tnz3R79bIKY2L8qlfHTRo8Deftb70mIQ00IhUcQ6lNUazV8CbaS_sZ-snez/exec', // Google Apps Script web app URL (ends in /exec). See google-apps-script/resume-log.gs.
 }
 
 export const skills = [
@@ -81,10 +83,24 @@ export const timeline = [
     icon: '🧭',
   },
   {
-    date: 'Education',
-    title: 'Software Engineering Graduate',
-    organization: 'Add your college / university',
-    description: 'Add your degree, institution, graduation year and any relevant academic highlights.',
+    date: '2021-2026',
+    title: 'M.Tech Software Engineering',
+    organization: 'Vellore Institute of Technology, Vellore',
+    description: 'CGPA - 8.12',
+    icon: '🎓',
+  },
+  {
+    date: '2020-2021',
+    title: '12th Standard',
+    organization: 'Nag Vidhyashram CBSE School, Ranipet',
+    description: '91.2%',
+    icon: '🎓',
+  },
+  {
+    date: '2018-2019',
+    title: '10th Standard',
+    organization: 'Nag Vidhyashram CBSE School, Ranipet',
+    description: '84.8%',
     icon: '🎓',
   },
 ]

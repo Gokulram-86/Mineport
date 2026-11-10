@@ -28,8 +28,13 @@ export default function ContactSection({ navigate }: ContactSectionProps) {
           <div className="eyebrow"><span className="eyebrow-dot" /> 05 / MULTIPLAYER</div>
           <h2>Have a quest<br />we can take on?</h2>
           <p>I'm always open to connecting, learning about interesting work, and collaborating on useful things.</p>
-          <div className="contact-actions">
-            <a className="button button-primary" href={`mailto:${profile.email}`}>
+          <div className="contact-actions whatsapp">
+            <a
+              className="button button-primary"
+              href={`https://wa.me/${profile.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent("Hi Gokul, I saw your portfolio and would like to connect!")}`}
+              target="_blank"
+              rel="noreferrer"
+            >
               <FaWhatsapp size={24}/> WhatsApp
             </a>
             <button className="button button-ghost copy-button" onClick={copyEmail}>

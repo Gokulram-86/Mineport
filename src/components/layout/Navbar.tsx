@@ -1,7 +1,8 @@
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ArrowUpRight, ChevronRight, Menu, X } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, ChevronRight, Menu, X } from 'lucide-react'
 import { navItems } from '../../constants/navigation'
-import { profile } from '../../data/portfolio'
+import ResumeModal from './ResumeModal'
 
 interface NavbarProps {
   activeSection: string
@@ -11,9 +12,48 @@ interface NavbarProps {
 }
 
 export default function Navbar({ activeSection, menuOpen, setMenuOpen, navigate }: NavbarProps) {
+  const [resumeOpen, setResumeOpen] = useState(false)
+  const closeResume = useCallback(() => setResumeOpen(false), [])
+  const [hidden, setHidden] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const lastY = useRef(0)
+
+  // Slide the navbar up when scrolling down, and back down when scrolling up.
+  useEffect(() => {
+    lastY.current = window.scrollY
+    let frame = 0
+
+    const update = () => {
+      frame = 0
+      const y = window.scrollY
+      const delta = y - lastY.current
+      setScrolled(y > 10)
+      if (y < 80) setHidden(false)
+      else if (delta > 6) setHidden(true)
+      else if (delta < -6) setHidden(false)
+      else return // ignore tiny jitters
+      lastY.current = y
+    }
+
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update)
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (frame) cancelAnimationFrame(frame)
+    }
+  }, [])
+
+  const isHidden = hidden && !menuOpen
+
   return (
     <>
-      <header className="topbar">
+      <ResumeModal open={resumeOpen} onClose={closeResume} />
+      <header
+        className={['topbar', isHidden && 'topbar-hidden', scrolled && 'topbar-scrolled'].filter(Boolean).join(' ')}
+      >
         <a className="brand" href="#home" onClick={(e) => { e.preventDefault(); navigate('home') }}>
           <span className="brand-cube"><span /></span>
           <span>GOKUL<span className="brand-muted">.DEV</span></span>
@@ -29,9 +69,18 @@ export default function Navbar({ activeSection, menuOpen, setMenuOpen, navigate 
             </button>
           ))}
         </nav>
-        <a className="topbar-cta" href={`mailto:${profile.email}`}>
-          <span className="status-dot" /> Available to connect <ArrowUpRight size={14} />
-        </a>
+        <div className="topbar-actions">
+          <button className="topbar-resume" type="button" onClick={() => setResumeOpen(true)}>
+            Resume <ArrowDown size={14} />
+          </button>
+          <a
+            className="topbar-cta"
+            href="#contact"
+            onClick={(e) => { e.preventDefault(); navigate('contact') }}
+          >
+            <span className="status-dot" /> Let's Talk <ArrowUpRight size={14} />
+          </a>
+        </div>
         <button
           className="mobile-menu-button"
           aria-label="Toggle navigation"

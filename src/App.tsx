@@ -55,8 +55,10 @@ function App() {
     const el = document.getElementById(id)
     if (!el) return
     const topbarHeight = (document.querySelector('.topbar') as HTMLElement)?.offsetHeight ?? 76
-    const offset = id === 'home' ? 0 : topbarHeight
-    const top = el.getBoundingClientRect().top + window.scrollY - offset
+    const target = el.getBoundingClientRect().top + window.scrollY
+    // Scrolling down hides the navbar, so only leave room for it when scrolling up.
+    const offset = id === 'home' || target > window.scrollY ? 0 : topbarHeight
+    const top = target - offset
     window.scrollTo({ top, behavior: 'smooth' })
   }
 

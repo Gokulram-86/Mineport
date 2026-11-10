@@ -52,20 +52,6 @@ export default function LoadingScreen({ onDone }: { onDone: () => void }) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: 'easeInOut' }}
         >
-          {/* Dirt tile background is handled in CSS */}
-
-          {/* Rotating 3D grass block */}
-          <div className="loader-block-wrap">
-            <div className="mc-block">
-              <div className="mc-face mc-top" />
-              <div className="mc-face mc-front" />
-              <div className="mc-face mc-right" />
-              <div className="mc-face mc-left" />
-              <div className="mc-face mc-back" />
-              <div className="mc-face mc-bottom" />
-            </div>
-          </div>
-
           {/* Title */}
           <div className="loader-title">Generating World</div>
 

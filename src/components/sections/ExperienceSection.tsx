@@ -22,6 +22,7 @@ export default function ExperienceSection() {
           </div>
         </div>
 
+        <div className="timeline-scroll">
         <div className="timeline">
           {timeline.map((item, index) => (
             <motion.div
@@ -41,6 +42,7 @@ export default function ExperienceSection() {
               </div>
             </motion.div>
           ))}
+        </div>
         </div>
       </div>
     </section>
