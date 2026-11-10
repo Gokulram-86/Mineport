@@ -22,7 +22,9 @@ export default function BottomHotbar({ activeSection, navigate }: BottomHotbarPr
           <small>{index + 1}</small>
         </button>
       ))}
-      <button className="quick-slot" onClick={() => navigate('contact')} title="Contact">
+      <button
+        className={activeSection === 'contact' ? 'quick-slot active' : 'quick-slot'}
+        onClick={() => navigate('contact')} title="Contact">
         <span>✉</span>
         <small>5</small>
       </button>

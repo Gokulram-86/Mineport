@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowUpRight, Github, X } from 'lucide-react'
 import { projects } from '../../data/portfolio'
+import Icon from '../shared/Icon'
 
 type Project = (typeof projects)[number]
 
@@ -33,7 +34,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             <div className="eyebrow">
               <span className="eyebrow-dot" /> CRAFTING TABLE / INSPECT ITEM
             </div>
-            <div className="modal-icon">{project.icon}</div>
+            <div className="modal-icon"><Icon value={project.icon} /></div>
             <span className="project-type">{project.type}</span>
             <h3>{project.title}</h3>
             <p>{project.description}</p>

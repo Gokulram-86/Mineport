@@ -46,7 +46,7 @@ export default function AboutSection({ navigate }: AboutSectionProps) {
           <div className="about-facts">
             <div>
               <span className="fact-icon"><BookOpen size={17} /></span>
-              <div><small>EDUCATION</small><strong>Software Engineering</strong></div>
+              <div><small>EDUCATION</small><strong>M.Tech Software Engineering</strong></div>
             </div>
             <div>
               <span className="fact-icon"><BriefcaseBusiness size={17} /></span>

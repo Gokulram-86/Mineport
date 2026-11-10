@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowUpRight, Sparkles } from 'lucide-react'
 import { projects } from '../../data/portfolio'
+import Icon from '../shared/Icon'
 import SectionHeading from '../shared/SectionHeading'
 import ProjectModal from './ProjectModal'
 
@@ -39,15 +40,21 @@ export default function ProjectsSection() {
                   <span className="project-index">{project.id.toUpperCase()}</span>
                   <span className="project-status"><span /> {project.status}</span>
                 </div>
+                {project.image ? (
+                  <div className="project-art project-art-image">
+                    <img src={project.image} alt={`${project.title} screenshot`} loading="lazy" />
+                  </div>
+                ) : (
                 <div className={`project-art project-art-${index + 1}`}>
                   <div className="craft-grid">
-                    <span>{project.icon}</span><span>✦</span><span>▧</span>
-                    <span>⌘</span><span>{project.icon}</span><span>◈</span>
+                    <span><Icon value={project.icon} /></span><span>✦</span><span>▧</span>
+                    <span>⌘</span><span><Icon value={project.icon} /></span><span>◈</span>
                     <span>▤</span><span>✧</span><span>⚙</span>
                   </div>
                   <div className="craft-arrow">➜</div>
-                  <div className="crafted-item">{project.icon}</div>
+                  <div className="crafted-item"><Icon value={project.icon} /></div>
                 </div>
+                )}
                 <div className="project-type">{project.type}</div>
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
