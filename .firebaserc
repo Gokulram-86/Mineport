@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "mineport-63b1c"
+  },
+  "targets": {
+    "mineport-63b1c": {
+      "hosting": {
+        "portfolio": [
+          "gokulramj-portfolio"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
